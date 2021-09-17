@@ -1,0 +1,17 @@
+.toggleIcon::before {
+  font-family: Objective !important;
+  content: "\f145";
+}
+.userIcon {
+  width: 48px;
+  height: 48px;
+  background-color: #c63906;
+  border-radius: 50%;
+  font-family: "Noto Sans";
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

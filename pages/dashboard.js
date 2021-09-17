@@ -1,7 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import Login from "../src/components/Login";
+import Dashboard from "../src/components/Dashboard";
+
 export default function Home() {
-  return <Login />;
+  return <Dashboard />;
 }
