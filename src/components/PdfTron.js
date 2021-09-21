@@ -4,22 +4,30 @@ import classes from "../../styles/PdfTron.module.css";
 
 const PdfTron = () => {
   const viewer = useRef(null);
+  const uploadRef = useRef(null);
   useEffect(() => {
     WebViewer(
       {
-        path: "lib",
-        initialDoc: "files/demo-annotated.pdf",
+        path: "../lib",
+        initialDoc: "",
       },
       viewer.current
     ).then((instance) => {
       const { documentViewer } = instance.Core;
-      // you can now call WebViewer APIs here...
+      uploadRef.current.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          instance.UI.loadDocument(file);
+        }
+      };
     });
   }, []);
 
   return (
     <div className="MyComponent">
-      <div className="header">React sample</div>
+      <div className="header">
+        <input type="file" ref={uploadRef}></input>
+      </div>
       <div className="webviewer" ref={viewer} style={{ height: "100vh" }}></div>
     </div>
   );

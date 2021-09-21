@@ -3,7 +3,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import classes from "../../styles/Doc.module.css";
 
-const Doc = ({ title, owner, fav, color }) => {
+const Doc = ({ title, owner, fav, color ,toggleFav}) => {
   let acronym = title.match(/\b(\w)/g);
   acronym = acronym.slice(0, 2).join("");
 
@@ -20,7 +20,7 @@ const Doc = ({ title, owner, fav, color }) => {
         </div>
       </div>
       <div className={classes.docOptions}>
-        <span className={clsx(fav && classes.star, fav || classes.unStar)} />
+        <span className={clsx(fav && classes.star, fav || classes.unStar)} onClick={toggleFav}/>
         <span className={classes.dots} />
       </div>
     </div>

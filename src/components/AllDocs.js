@@ -19,6 +19,9 @@ const AllDocs = ({ theDocs }) => {
             color={docs.color}
           />
         ))}
+        {theDocs.length === 0 && (
+          <div className={classes.nothing}>Nothing to show here yet</div>
+        )}
       </div>
     </div>
   );
