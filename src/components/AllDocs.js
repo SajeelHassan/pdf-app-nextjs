@@ -3,7 +3,7 @@ import Link from "next/link";
 import classes from "../../styles/AllDocs.module.css";
 import Doc from "./Doc";
 
-const AllDocs = ({ theDocs }) => {
+const AllDocs = ({ theDocs ,toggleFav,showInfo}) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.title}>
@@ -13,10 +13,13 @@ const AllDocs = ({ theDocs }) => {
         {theDocs.map((docs, index) => (
           <Doc
             key={index}
+            id={docs.id}
             title={docs.title}
             owner={docs.owner}
             fav={docs.fav}
             color={docs.color}
+            toggleFav={toggleFav}
+            showInfo={showInfo}
           />
         ))}
         {theDocs.length === 0 && (

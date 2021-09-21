@@ -51,3 +51,9 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width:470px) {
+  .headerWrapper{
+    padding:0 16px;
+  }
+}

@@ -48,3 +48,44 @@
   content: "\f1d8";
   color: #0266c8;
 }
+
+
+ @media(max-width:630px){
+  .uploadSection{
+    padding: 0.75rem 1.125rem;
+
+
+  }
+  
+}
+@media(max-width:470px){
+  .dots{
+    display: none;
+  }
+  .uploadSection{
+    position: fixed;
+    bottom: 0;
+    background-color: #ffffff;
+    outline:none;
+    width:100%;
+    box-shadow:
+  0px 0px 2.6px rgba(0, 0, 0, 0.056),
+  0px 0px 6.7px rgba(0, 0, 0, 0.08),
+  0px 0px 13.6px rgba(0, 0, 0, 0.1),
+  0px 0px 28.1px rgba(0, 0, 0, 0.124),
+  0px 0px 77px rgba(0, 0, 0, 0.18)
+;
+  }
+  .uploadSection{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 70px;;
+    
+  }
+  .uploadWrapper{
+    border:1px solid grey;
+  border-radius: 1.75rem;
+    margin-bottom: 53px;
+  }
+}

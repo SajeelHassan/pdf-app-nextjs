@@ -3,7 +3,7 @@ import Link from "next/link";
 import classes from "../../styles/Favourites.module.css";
 import Doc from "./Doc";
 
-const Favourites = ({ theDocs, toggleFav }) => {
+const Favourites = ({ theDocs, toggleFav,showInfo }) => {
   const favs = theDocs.filter((doc) => doc.fav);
   return (
     <div className={classes.wrapper}>
@@ -14,11 +14,13 @@ const Favourites = ({ theDocs, toggleFav }) => {
         {favs.map((docs, index) => (
           <Doc
             key={index}
+            id={docs.id}
             title={docs.title}
             owner={docs.owner}
             fav={docs.fav}
             color={docs.color}
             toggleFav={toggleFav}
+            showInfo={showInfo}
           />
         ))}
         {favs.length === 0 && (

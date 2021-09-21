@@ -48,3 +48,10 @@
   color: #0266c8;
   font-size: 1rem;
 }
+
+@media(max-width:470px){
+  .sorter{
+    display: none;
+  }
+  
+}

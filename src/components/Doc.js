@@ -3,12 +3,23 @@ import Link from "next/link";
 import clsx from "clsx";
 import classes from "../../styles/Doc.module.css";
 
-const Doc = ({ title, owner, fav, color ,toggleFav}) => {
+const Doc = ({ title, owner,id, fav, color ,toggleFav,showInfo}) => {
   let acronym = title.match(/\b(\w)/g);
   acronym = acronym.slice(0, 2).join("");
-
+  const toggleFavourite =()=>{
+    toggleFav(id)
+  };
+  const showContent = ()=>{
+showInfo({
+  id,
+  title,
+  color,
+  fav,
+  owner
+})
+  }
   return (
-    <div className={classes.doc}>
+    <div className={classes.doc} onClick={showContent}>
       <div className={classes.docInfo}>
         <div className={classes.marker} />
         <div className={classes.docIcon} style={{ backgroundColor: color }}>
@@ -20,7 +31,7 @@ const Doc = ({ title, owner, fav, color ,toggleFav}) => {
         </div>
       </div>
       <div className={classes.docOptions}>
-        <span className={clsx(fav && classes.star, fav || classes.unStar)} onClick={toggleFav}/>
+        <span className={clsx(fav && classes.star, fav || classes.unStar)} onClick={toggleFavourite}/>
         <span className={classes.dots} />
       </div>
     </div>

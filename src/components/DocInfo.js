@@ -1,14 +1,15 @@
 import React from "react";
 import classes from "../../styles/DocInfo.module.css";
 
-const DocInfo = () => {
+const DocInfo = ({info}) => {
+  const {any,content}=info;
   return (
     <div className={classes.wrapper}>
-      <div className={classes.header}>
-        <span style={{ backgroundColor: "#F77474" }} className={classes.icon}>
+      {any &&  (<><div className={classes.header}>
+        <span style={{ backgroundColor: content.color }} className={classes.icon}>
           D3
         </span>
-        <span className={classes.title}>Document 3</span>
+        <span className={classes.title}>{content.title}</span>
       </div>
       <div className={classes.tabs}>
         <p>Details</p>
@@ -17,7 +18,7 @@ const DocInfo = () => {
       <div className={classes.infos}>
         <div className={classes.info}>
           <p className={classes.key}>Owner</p>
-          <p className={classes.value}>Andrew Miralles</p>
+          <p className={classes.value}>{content.owner}</p>
         </div>
         <div className={classes.info}>
           <p className={classes.key}>Created</p>
@@ -35,7 +36,7 @@ const DocInfo = () => {
           <p className={classes.key}>Size</p>
           <p className={classes.value}>12mb</p>
         </div>
-      </div>
+      </div></>)}
     </div>
   );
 };

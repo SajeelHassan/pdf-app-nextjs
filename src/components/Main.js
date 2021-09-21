@@ -16,67 +16,67 @@ const colors = [
   "#00893E",
   "#5558AF",
 ];
-const theDocs = [];
-// const theDocs = [
-//   {
-//     id: "idd0987",
-//     title: "My Doc",
-//     owner: "Andrew Miralles",
-//     fav: false,
-//     color: colors[Math.floor(Math.random() * colors.length)],
-//   },
-//   {
-//     id: "idd0987",
-//     title: "Document 1",
-//     owner: "Andrew Miralles",
-//     fav: false,
-//     color: colors[Math.floor(Math.random() * colors.length)],
-//   },
-//   {
-//     id: "idd0987",
-//     title: "Document 2",
-//     owner: "Andrew Miralles",
-//     fav: false,
-//     color: colors[Math.floor(Math.random() * colors.length)],
-//   },
-//   {
-//     id: "idd0987",
-//     title: "Important Document",
-//     owner: "Andrew Miralles",
-//     fav: false,
-//     color: colors[Math.floor(Math.random() * colors.length)],
-//   },
-//   {
-//     id: "idd0987",
-//     title: "My Doc",
-//     owner: "Andrew Miralles",
-//     fav: false,
-//     color: colors[Math.floor(Math.random() * colors.length)],
-//   },
-//   {
-//     id: "idd0987",
-//     title: "My Doc",
-//     owner: "Andrew Miralles",
-//     fav: false,
-//     color: colors[Math.floor(Math.random() * colors.length)],
-//   },
-//   {
-//     id: "idd0987",
-//     title: "My Doc",
-//     owner: "Andrew Miralles",
-//     fav: false,
-//     color: colors[Math.floor(Math.random() * colors.length)],
-//   },
-//   {
-//     id: "idd0987",
-//     title: "My Doc",
-//     owner: "Andrew Miralles",
-//     fav: false,
-//     color: colors[Math.floor(Math.random() * colors.length)],
-//   },
-// ];
+// const theDocs = [];
+const theDocs = [
+  {
+    id: "idd0987",
+    title: "My Doc",
+    owner: "Andrew Miralles",
+    fav: false,
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    id: "idd0988",
+    title: "Document 1",
+    owner: "Andrew Miralles",
+    fav: false,
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    id: "idd0989",
+    title: "Document 2",
+    owner: "Andrew Miralles",
+    fav: false,
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    id: "idd0990",
+    title: "Important Document",
+    owner: "Andrew Miralles",
+    fav: false,
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    id: "idd0991",
+    title: "My Doc",
+    owner: "Andrew Miralles",
+    fav: false,
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    id: "idd0992",
+    title: "My Doc",
+    owner: "Andrew Miralles",
+    fav: false,
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    id: "idd0993",
+    title: "My Doc",
+    owner: "Andrew Miralles",
+    fav: false,
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+  {
+    id: "idd0994",
+    title: "My Doc",
+    owner: "Andrew Miralles",
+    fav: false,
+    color: colors[Math.floor(Math.random() * colors.length)],
+  },
+];
 
-const Main = () => {
+const Main = ({showInfo}) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [docs, setDocs] = useState();
   useEffect(() => {
@@ -84,7 +84,14 @@ const Main = () => {
     setIsLoaded(true);
   }, []);
 
-  const toggleFav = () => {};
+  const toggleFav = (id) => {
+      let updatedDocs=[...docs];
+      const docIndex = docs.findIndex(
+        d => d.id === id
+      );
+      updatedDocs[docIndex].fav=!updatedDocs[docIndex].fav;
+      setDocs(updatedDocs);  
+  };
   async function uploadFileHandler(fileData) {
     // const res = await fetch('http://localhost:3000/api/docs', {
     //             method: 'POST',
@@ -116,8 +123,8 @@ const Main = () => {
             {/* Search */}
             <Search />
             {/* Favourites */}
-            <Favourites theDocs={docs} toggleFav={toggleFav} />
-            <AllDocs theDocs={docs} toggleFav={toggleFav} />
+            <Favourites theDocs={docs} toggleFav={toggleFav} showInfo={showInfo} />
+            <AllDocs theDocs={docs} toggleFav={toggleFav} showInfo={showInfo}/>
           </div>
         </div>
       )}
