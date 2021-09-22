@@ -5,25 +5,27 @@ import clsx from "clsx";
 import classes from "../../styles/Doc.module.css";
 import ThemeContext from "./Context";
 
-const Doc = ({ title, owner,id, fav, color ,toggleFav,showInfo}) => {
+const Doc = ({ name,size,created,filetype,cloudId,id, fav, color ,toggleFav,showInfo}) => {
   const {isDarkMode,}=useContext(ThemeContext);
   const router = useRouter();
-  let acronym = title.match(/\b(\w)/g);
+  let acronym = name.match(/\b(\w)/g);
   acronym = acronym.slice(0, 2).join("");
+  acronym=acronym.toUpperCase();
   const toggleFavourite =()=>{
     toggleFav(id)
   };
   const showContent = ()=>{
 showInfo({
   id,
-  title,
+  name,
   color,
   fav,
-  owner
+  size,
+  filetype,created
 })
   }
   const showPdf=()=>{
-    router.push('./view/v1');
+    router.push(`./view/${id}`);
   }
   return (
     <div className={clsx(classes.doc,isDarkMode && classes.docDark)} onClick={showContent}>
@@ -33,8 +35,8 @@ showInfo({
           {acronym}
         </div>
         <div className={classes.docDetails}>
-          <p className={clsx(classes.docTitle,isDarkMode && classes.docTitleDark)} onClick={showPdf}>{title}</p>
-          <p className={clsx(classes.docOwner,isDarkMode && classes.docOwnerDark)}>Owner {owner}</p>
+          <p className={clsx(classes.docTitle,isDarkMode && classes.docTitleDark)} onClick={showPdf}>{name}</p>
+          <p className={clsx(classes.docOwner,isDarkMode && classes.docOwnerDark)}>Owner Andrew Miralles}</p>
         </div>
       </div>
       <div className={clsx(classes.docOptions,isDarkMode && classes.docOptionsDark)}>

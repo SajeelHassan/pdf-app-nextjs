@@ -1,8 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import Header from "../../src/components/Header";
+import axios from "axios";
 
-export default function Home({Hello}) {
+export default function Home({doc}) {
   const PdfTron = dynamic(() => import("../../src/components/PdfTron.js"), {
     ssr: false,
   });
@@ -10,35 +11,28 @@ export default function Home({Hello}) {
   // console.log(Hello);
   return (
     <>
-      <Header />
-      <PdfTron  />
+      <Header name={doc.name}/>
+      <PdfTron  doc={doc}/>
     </>
   );
 }
 
 export async function getStaticPaths() {
+  const res = await axios('http://localhost:3000/api/docs');
+const data=res.data.data;
+const paths=data.map(d=>({ params: { file: d._id } }));
   return {
-    fallback: false,
-    paths: [
-      {
-        params: {
-          file: 'v1',
-        },
-      },
-      {
-        params: {
-          file: 'v2',
-        },
-      },
-    ],
+    paths,
+    fallback:false,
   };
 }
 
 export async function getStaticProps (context){
-  // console.log(context);
+  const res = await axios(`http://localhost:3000/api/docs/${context.params.file}`)
   return {
     props:{
-        Hello:'Hello'
-    }
+        doc:res.data.data
+    },
+    revalidate:1
   }
 }

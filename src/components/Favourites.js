@@ -16,12 +16,15 @@ const Favourites = ({ theDocs, toggleFav,showInfo }) => {
       <div className={clsx(isDarkMode ?classes.mainDark : classes.main)}>
         {favs.map((docs, index) => (
           <Doc
-            key={index}
-            id={docs.id}
-            title={docs.title}
-            owner={docs.owner}
+            key={docs._id}
+            id={docs._id}
+            name={docs.name}
+            size={docs.size}
+            created={docs.created}
+            filetype={docs.filetype}
             fav={docs.fav}
             color={docs.color}
+            cloudId={docs.cloudId}
             toggleFav={toggleFav}
             showInfo={showInfo}
           />

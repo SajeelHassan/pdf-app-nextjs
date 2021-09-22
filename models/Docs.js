@@ -4,8 +4,23 @@ const DocSchema = new mongoose.Schema({
     name: {
         type: String
     },
-    theFile : {
+    size : {
         type: String 
+    },
+    created : {
+        type: String
+    },
+    filetype : {
+        type: String
+    },
+    pdfFile:{
+        type:String
+    },
+    color:{
+        type:String
+    },
+    fav:{
+        type:Boolean
     },
     cloudId:{
         type: String 

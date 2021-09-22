@@ -6,13 +6,14 @@ import ThemeContext from "./Context";
 const DocInfo = ({info}) => {
   const {isDarkMode,}=useContext(ThemeContext);
   const {any,content}=info;
+  
   return (
     <div className={classes.wrapper}>
       {any &&  (<><div className={classes.header}>
         <span style={{ backgroundColor: content.color }} className={clsx(classes.icon,isDarkMode && classes.iconDark)}>
           D3
         </span>
-        <span className={clsx(classes.title,isDarkMode && classes.titleDark)}>{content.title}</span>
+        <span className={clsx(classes.title,isDarkMode && classes.titleDark)}>{content.name}</span>
       </div>
       <div className={clsx(classes.tabs,isDarkMode && classes.tabsDark)}>
         <p>Details</p>
@@ -21,15 +22,15 @@ const DocInfo = ({info}) => {
       <div className={classes.infos}>
         <div className={classes.info}>
           <p className={clsx(classes.key,isDarkMode && classes.keyDark)}>Owner</p>
-          <p className={clsx(classes.value,isDarkMode && classes.valueDark)}>{content.owner}</p>
+          <p className={clsx(classes.value,isDarkMode && classes.valueDark)}>Andrew Miralles</p>
         </div>
         <div className={classes.info}>
           <p className={clsx(classes.key,isDarkMode && classes.keyDark)}>Created</p>
-          <p className={clsx(classes.value,isDarkMode && classes.valueDark)}>4 May 2003, 10:46 PM</p>
+          <p className={clsx(classes.value,isDarkMode && classes.valueDark)}>{content.created}</p>
         </div>
         <div className={classes.info}>
           <p className={clsx(classes.key,isDarkMode && classes.keyDark)}>Modified</p>
-          <p className={clsx(classes.value,isDarkMode && classes.valueDark)}>12 May 2021, 17:32 PM</p>
+          <p className={clsx(classes.value,isDarkMode && classes.valueDark)}></p>
         </div>
         <div className={classes.info}>
           <p className={clsx(classes.key,isDarkMode && classes.keyDark)}>Type</p>
@@ -37,7 +38,7 @@ const DocInfo = ({info}) => {
         </div>
         <div className={classes.info}>
           <p className={clsx(classes.key,isDarkMode && classes.keyDark)}>Size</p>
-          <p className={clsx(classes.value,isDarkMode && classes.valueDark)}>12mb</p>
+          <p className={clsx(classes.value,isDarkMode && classes.valueDark)}>{(content.size/1000000).toFixed(2)}Mb</p>
         </div>
       </div></>)}
     </div>

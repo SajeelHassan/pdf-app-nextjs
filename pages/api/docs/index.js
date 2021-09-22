@@ -1,40 +1,23 @@
 import dbConnect from '../../../utils/dbConnect';
-import upload from '../../../utils/multer';
-import cloudinary from '../../../utils/cloudinary';
 import Doc from '../../../models/Docs';
 
 dbConnect();
 
 // eslint-disable-next-line import/no-anonymous-default-export
-const handler = async (req, res) => {
+export default async (req, res) => {
     const { method } = req;
-
     switch (method) {
-        case 'POST':
+        case 'GET':
             try {
-                // Upload image to cloudinary
-                upload.single('uploading');
-                // console.log(req.file);
-                // const result = await cloudinary.uploader.upload(req.body.name);
-                // console.log(result.json)
-                // console.log(req)
-                // Create new user
-                // let user = new Doc({
-                // name: req.body.name,
-                // theFile: result.secure_url,
-                // cloudId: result.public_id,
-                // });
-                // // Save user
-                // await user.save();
-                // res.json(user);
-                } 
-            catch (err) {
-                    console.log(err);
-                }
+                const docs = await Doc.find({});
+
+                res.status(200).json({ success: true, data: docs })
+            } catch (error) {
+                res.status(400).json({ success: false });
+            }
             break;
         default:
             res.status(400).json({ success: false });
             break;
     }
 }
-export default handler;

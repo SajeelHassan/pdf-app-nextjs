@@ -6,81 +6,15 @@ import Upload from "./Upload";
 import Favourites from "./Favourites";
 import AllDocs from "./AllDocs";
 import ThemeContext from "./Context";
+import axios from "axios";
+import { useRouter } from "next/dist/client/router";
 
-const colors = [
-  "#8089FF",
-  "#4C7FFF",
-  "#F77474",
-  "#FF6E9C",
-  "#ED9C37",
-  "#FFC144",
-  "#00893E",
-  "#5558AF",
-];
-// const theDocs = [];
-const theDocs = [
-  {
-    id: "idd0987",
-    title: "My Doc",
-    owner: "Andrew Miralles",
-    fav: false,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  },
-  {
-    id: "idd0988",
-    title: "Document 1",
-    owner: "Andrew Miralles",
-    fav: false,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  },
-  {
-    id: "idd0989",
-    title: "Document 2",
-    owner: "Andrew Miralles",
-    fav: false,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  },
-  {
-    id: "idd0990",
-    title: "Important Document",
-    owner: "Andrew Miralles",
-    fav: false,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  },
-  {
-    id: "idd0991",
-    title: "My Doc",
-    owner: "Andrew Miralles",
-    fav: false,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  },
-  {
-    id: "idd0992",
-    title: "My Doc",
-    owner: "Andrew Miralles",
-    fav: false,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  },
-  {
-    id: "idd0993",
-    title: "My Doc",
-    owner: "Andrew Miralles",
-    fav: false,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  },
-  {
-    id: "idd0994",
-    title: "My Doc",
-    owner: "Andrew Miralles",
-    fav: false,
-    color: colors[Math.floor(Math.random() * colors.length)],
-  },
-];
-
-const Main = ({showInfo}) => {
+const Main = ({showInfo,theDocs}) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [progress, setProgress] = useState(false);
   const [docs, setDocs] = useState();
   const {isDarkMode,}=useContext(ThemeContext);
+  const router=useRouter();
   useEffect(() => {
     setDocs(theDocs);
     setIsLoaded(true);
@@ -89,23 +23,24 @@ const Main = ({showInfo}) => {
   const toggleFav = (id) => {
       let updatedDocs=[...docs];
       const docIndex = docs.findIndex(
-        d => d.id === id
+        d => d._id === id
       );
       updatedDocs[docIndex].fav=!updatedDocs[docIndex].fav;
       setDocs(updatedDocs);  
   };
-  async function uploadFileHandler(fileData) {
-    // const res = await fetch('http://localhost:3000/api/docs', {
-    //             method: 'POST',
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             },
-    //             body: JSON.stringify(fileData)
-    //         })
-
-    // const data = await response.json();
-
-    console.log(fileData);
+  async function uploadFileHandler(formData) {
+    setProgress(true);
+    const config = {
+      headers: { 'content-type': 'multipart/form-data' },
+      onUploadProgress: (event) => {
+        console.log(`Current progress:`, Math.round((event.loaded * 100) / event.total));
+      },
+    };
+    const response = await axios.post('/api/FileUpload', formData, config);
+    if(response.status===200){
+    setProgress(false);
+      router.reload();
+    }
 
   }
   return (
