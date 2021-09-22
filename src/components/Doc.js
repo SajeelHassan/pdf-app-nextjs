@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import clsx from "clsx";
 import classes from "../../styles/Doc.module.css";
@@ -6,7 +7,7 @@ import ThemeContext from "./Context";
 
 const Doc = ({ title, owner,id, fav, color ,toggleFav,showInfo}) => {
   const {isDarkMode,}=useContext(ThemeContext);
-
+  const router = useRouter();
   let acronym = title.match(/\b(\w)/g);
   acronym = acronym.slice(0, 2).join("");
   const toggleFavourite =()=>{
@@ -21,6 +22,9 @@ showInfo({
   owner
 })
   }
+  const showPdf=()=>{
+    router.push('./view/v1');
+  }
   return (
     <div className={clsx(classes.doc,isDarkMode && classes.docDark)} onClick={showContent}>
       <div className={classes.docInfo}>
@@ -29,7 +33,7 @@ showInfo({
           {acronym}
         </div>
         <div className={classes.docDetails}>
-          <p className={clsx(classes.docTitle,isDarkMode && classes.docTitleDark)}>{title}</p>
+          <p className={clsx(classes.docTitle,isDarkMode && classes.docTitleDark)} onClick={showPdf}>{title}</p>
           <p className={clsx(classes.docOwner,isDarkMode && classes.docOwnerDark)}>Owner {owner}</p>
         </div>
       </div>
