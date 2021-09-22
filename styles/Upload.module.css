@@ -21,6 +21,10 @@
   align-items: center;
   cursor: pointer;
 }
+.uploadButtonDark{
+  color: #0B111B;
+  background-color: #5CA3FF;
+}
 .uploadButton > p {
   font-size: 1rem;
   font-weight: bold;
@@ -35,6 +39,10 @@
   font-size: 0.875rem;
   font-weight: 500;
   text-align: center;
+  color:#ffffff;
+}
+.uploadIconDark::before{
+  color:#0B111B;
 }
 .dots {
   width: 2rem;
@@ -48,7 +56,9 @@
   content: "\f1d8";
   color: #0266c8;
 }
-
+.dotsDark::before{
+  color:#5CA3FF;
+}
 
  @media(max-width:630px){
   .uploadSection{
@@ -87,5 +97,13 @@
     border:1px solid grey;
   border-radius: 1.75rem;
     margin-bottom: 53px;
+  }
+  .uploadSectionDark{
+    background-color: #171D26;
+
+  }
+  .uploadWrapperDark{
+    border:1px solid #0B111B;
+
   }
 }

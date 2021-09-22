@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import classes from "../../styles/Favourites.module.css";
 import Doc from "./Doc";
+import clsx from "clsx";
+import ThemeContext from "./Context";
 
 const Favourites = ({ theDocs, toggleFav,showInfo }) => {
+  const {isDarkMode,}=useContext(ThemeContext);
   const favs = theDocs.filter((doc) => doc.fav);
   return (
     <div className={classes.wrapper}>
-      <div className={classes.title}>
+      <div className={clsx(classes.title,isDarkMode&&classes.titleDark)}>
         <p>Favourites</p>
       </div>
-      <div className={classes.main}>
+      <div className={clsx(isDarkMode ?classes.mainDark : classes.main)}>
         {favs.map((docs, index) => (
           <Doc
             key={index}
@@ -24,7 +27,7 @@ const Favourites = ({ theDocs, toggleFav,showInfo }) => {
           />
         ))}
         {favs.length === 0 && (
-          <div className={classes.nothing}>Nothing to show here yet</div>
+          <div className={clsx(classes.nothing,isDarkMode&&classes.nothingDark)}>Nothing to show here yet</div>
         )}
       </div>
     </div>

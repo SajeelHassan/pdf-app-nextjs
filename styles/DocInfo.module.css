@@ -17,11 +17,20 @@
   line-height: 1.5625rem;
   border-radius: 0.5rem;
 }
+.iconDark{
+  color:#0B111B;
+}
 .title {
   font-weight: bold;
   font-size: 1.75rem;
   line-height: 2.5rem;
   margin-left: 1.75rem;
+  color: #32373F;
+
+}
+.titleDark{
+  color:#ffffff;
+
 }
 .tabs {
   display: flex;
@@ -32,12 +41,20 @@
   font-size: 1rem;
   line-height: 1.25rem;
   padding: 16px 0 12px 0;
+  color: #32373F;
+}
+.tabsDark > p {
+  color: #ffffff;
+
 }
 .marker {
   width: 3.4375rem;
   height: 4px;
   background-color: #0266c8;
   border-radius: 0.25rem;
+}
+.markerDark{
+  background-color: #5CA3FF;
 }
 .infos {
   padding: 12px 0;
@@ -57,10 +74,16 @@
 .value {
   color: #32373f;
 }
+.valueDark{
+  color: #ffffff;
+}
 .key {
   width: 5.375rem;
   margin-right: 0.75rem;
   color: #707070;
+}
+.keyDark{
+  color:#96A5BD;
 }
 
 @media (max-width: 960px) {

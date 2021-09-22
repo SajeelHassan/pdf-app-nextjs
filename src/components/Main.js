@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import React, { useState, useEffect,useContext } from "react";
+import clsx from 'clsx';
 import classes from "../../styles/Main.module.css";
 import Search from "./Search";
 import Upload from "./Upload";
 import Favourites from "./Favourites";
 import AllDocs from "./AllDocs";
+import ThemeContext from "./Context";
 
 const colors = [
   "#8089FF",
@@ -79,6 +80,7 @@ const theDocs = [
 const Main = ({showInfo}) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [docs, setDocs] = useState();
+  const {isDarkMode,}=useContext(ThemeContext);
   useEffect(() => {
     setDocs(theDocs);
     setIsLoaded(true);
@@ -109,17 +111,17 @@ const Main = ({showInfo}) => {
   return (
     <div className={classes.MainWrapper}>
       {/* Docs Title */}
-      <div className={classes.userAndTitle}>
-        <div className={classes.userIcon}>AM</div>
-        <div className={classes.title}>My Documents</div>
+      <div className={clsx(classes.userAndTitle,isDarkMode&& classes.userAndTitleDark)}>
+        <div className={clsx(classes.userIcon,isDarkMode&&classes.userIconDark)}>AM</div>
+        <div className={clsx(classes.title,isDarkMode&&classes.titleDark)}>My Documents</div>
       </div>
       {/* Upload Section */}
       <Upload uploadFileHandler={uploadFileHandler} />
       {/* Main Docs */}
 
       {isLoaded && (
-        <div className={classes.mainSectionWrapper}>
-          <div className={classes.mainSection}>
+        <div className={clsx(classes.mainSectionWrapper,isDarkMode&&classes.mainSectionWrapperDark)}>
+          <div className={clsx(classes.mainSection,isDarkMode&&classes.mainSectionDark)}>
             {/* Search */}
             <Search />
             {/* Favourites */}

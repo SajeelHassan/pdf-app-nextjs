@@ -15,18 +15,29 @@
   justify-content: center;
   align-items: center;
 }
+.userIconDark{
+  background-color: #F27F5A;
+  color: #0B111B;
+}
 .userAndTitle {
   display: flex;
   align-items: center;
   padding: 1.125rem 3rem;
   border-top: 1px solid #f5f5f5;
 }
-.title {
+.userAndTitleDark{
+  border-top: 1px solid #171D26;
+}
+.title {  
   font-weight: 700;
   font-size: 1.75rem;
   line-height: 2.5rem;
   color: #32373f;
   margin-left: 1.75rem;
+}
+.titleDark{
+  color: #ffffff;
+
 }
 
 /* upload section */
@@ -41,7 +52,13 @@
   padding: 2.25rem;
   border-radius: 1rem;
 }
+.mainSectionWrapperDark{
+  background-color: #0B111B;
+}
+.mainSectionDark{
+  background-color: #171D26;
 
+}
 @media (min-width: 1920px) {
   .MainWrapper {
     width: 1184px;

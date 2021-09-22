@@ -1,7 +1,10 @@
-import React, { useRef } from "react";
+import clsx from "clsx";
+import React, { useRef ,useContext} from "react";
 import classes from "../../styles/Upload.module.css";
+import ThemeContext from "./Context";
 
 const Upload = ({ uploadFileHandler }) => {
+  const {isDarkMode,}=useContext(ThemeContext);
   const uploadBtn = useRef();
   const uploadDoc = (e) => {
     const file = e.target.files[0];
@@ -14,15 +17,15 @@ const Upload = ({ uploadFileHandler }) => {
     uploadFileHandler(data);
   };
   return (
-    <div className={classes.uploadSection}>
+    <div className={clsx(classes.uploadSection,isDarkMode && classes.uploadSectionDark)}>
       <div className={classes.uploadWrapper}>
         <input type="file" id="upload" name='uploading' hidden onChange={uploadDoc} />
-        <label htmlFor="upload" className={classes.uploadButton}>
-          <span className={classes.uploadIcon}></span>
+        <label htmlFor="upload" className={clsx(classes.uploadButton,isDarkMode && classes.uploadButtonDark)}>
+          <span className={clsx(classes.uploadIcon,isDarkMode && classes.uploadIconDark)}></span>
           <p>Upload new</p>
         </label>
       </div>
-      <span className={classes.dots}></span>
+      <span className={clsx(classes.dots,isDarkMode && classes.dotsDark)}></span>
     </div>
   );
 };
