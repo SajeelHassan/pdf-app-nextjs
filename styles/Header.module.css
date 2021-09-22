@@ -20,6 +20,7 @@ background-color: #0B111B;
   font-size: 1.75rem;
   line-height: 2.5rem;
   letter-spacing: -1.5%;
+  cursor: pointer;
 }
 .logoLight{
   color: #32373f;
