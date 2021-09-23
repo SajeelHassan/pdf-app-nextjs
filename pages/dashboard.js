@@ -10,7 +10,7 @@ export default function Home(props) {
 
 
 export async function getStaticProps(){
-  const res=await axios('http://pdfbox.vercel.app/api/docs');
+  const res=await axios('https://pdfbox.vercel.app/api/docs');
   return {
     props:{
       theDocs:res.data.data

@@ -18,7 +18,7 @@ export default function Home({doc}) {
 }
 
 export async function getStaticPaths() {
-  const res = await axios('http://pdfbox.vercel.app/api/docs');
+  const res = await axios('https://pdfbox.vercel.app/api/docs');
 const data=res.data.data;
 const paths=data.map(d=>({ params: { file: d._id } }));
   return {
@@ -28,7 +28,7 @@ const paths=data.map(d=>({ params: { file: d._id } }));
 }
 
 export async function getStaticProps (context){
-  const res = await axios(`http://pdfbox.vercel.app/api/docs/${context.params.file}`)
+  const res = await axios(`https://pdfbox.vercel.app/api/docs/${context.params.file}`)
   return {
     props:{
         doc:res.data.data
