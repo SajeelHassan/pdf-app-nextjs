@@ -36,7 +36,7 @@ showInfo({
         </div>
         <div className={classes.docDetails}>
           <p className={clsx(classes.docTitle,isDarkMode && classes.docTitleDark)} onClick={showPdf}>{name}</p>
-          <p className={clsx(classes.docOwner,isDarkMode && classes.docOwnerDark)}>Owner Andrew Miralles}</p>
+          <p className={clsx(classes.docOwner,isDarkMode && classes.docOwnerDark)}>Owner Andrew Miralles</p>
         </div>
       </div>
       <div className={clsx(classes.docOptions,isDarkMode && classes.docOptionsDark)}>
