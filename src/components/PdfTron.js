@@ -2,24 +2,35 @@ import React, { useRef, useEffect } from "react";
 import WebViewer from "@pdftron/webviewer";
 import classes from "../../styles/PdfTron.module.css";
 
-const PdfTron = () => {
+const PdfTron = ({doc}) => {
+  console.log(doc);
   const viewer = useRef(null);
   const uploadRef = useRef(null);
-  useEffect(() => {
+   useEffect(() => {
     WebViewer(
       {
-        path: "../lib",
-        initialDoc: "",
+        path: '../lib',
+        initialDoc: 'uploads/SajeelHassan.pdf',
       },
-      viewer.current
+      viewer.current,
     ).then((instance) => {
-      const { documentViewer } = instance.Core;
-      // uploadRef.current.onchange = (e) => {
-      //   const file = e.target.files[0];
-      //   if (file) {
-      //     instance.UI.loadDocument(file);
-      //   }
-      // };
+      const { documentViewer, annotationManager, Annotations } = instance.Core;
+      // instance.UI.loadDocument(doc.pdfFile, { filename: doc.name });
+      documentViewer.addEventListener('documentLoaded', () => {
+        const rectangleAnnot = new Annotations.RectangleAnnotation({
+          PageNumber: 1,
+          // values are in page coordinates with (0, 0) in the top left
+          X: 100,
+          Y: 150,
+          Width: 200,
+          Height: 50,
+          Author: annotationManager.getCurrentUser()
+        });
+
+        annotationManager.addAnnotation(rectangleAnnot);
+        // need to draw the annotation otherwise it won't show up until the page is refreshed
+        annotationManager.redrawAnnotation(rectangleAnnot);
+      });
     });
   }, []);
 
