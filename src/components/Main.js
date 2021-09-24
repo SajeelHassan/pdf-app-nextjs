@@ -36,7 +36,7 @@ const Main = ({showInfo,theDocs}) => {
         // console.log(`Current progress:`, Math.round((event.loaded * 100) / event.total));
       },
     };
-    const response = await axios.post('api/FileUpload', formData, config);
+    const response = await axios.post('/api/FileUpload', formData, config);
     if(response.status===200){
     setProgress(false);
       router.reload();
