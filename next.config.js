@@ -5,6 +5,6 @@ module.exports = {
         CLOUDINARY_CLOUD_NAME:'sajeel',
         CLOUDINARY_API_KEY:'737491484278129',
         CLOUDINARY_API_SECRET:'QUM1iq-BO1HBCSZTBFePQIxrT_A',
-        WEB_ADDRESS:'https://pdfboxnew.vercel.app'
+        WEB_ADDRESS:'http://localhost:3000'
     }
 }

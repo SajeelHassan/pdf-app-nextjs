@@ -3,7 +3,7 @@ import WebViewer from "@pdftron/webviewer";
 import classes from "../../styles/PdfTron.module.css";
 
 const PdfTron = ({doc}) => {
-  console.log(doc);
+  // console.log(doc);
   const viewer = useRef(null);
   const uploadRef = useRef(null);
    useEffect(() => {

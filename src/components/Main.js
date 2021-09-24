@@ -33,10 +33,10 @@ const Main = ({showInfo,theDocs}) => {
     const config = {
       headers: { 'content-type': 'multipart/form-data' },
       onUploadProgress: (event) => {
-        console.log(`Current progress:`, Math.round((event.loaded * 100) / event.total));
+        // console.log(`Current progress:`, Math.round((event.loaded * 100) / event.total));
       },
     };
-    const response = await axios.post('/api/FileUpload', formData, config);
+    const response = await axios.post('api/FileUpload', formData, config);
     if(response.status===200){
     setProgress(false);
       router.reload();

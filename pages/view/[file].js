@@ -7,8 +7,6 @@ export default function Home({doc}) {
   const PdfTron = dynamic(() => import("../../src/components/PdfTron.js"), {
     ssr: false,
   });
-  
-  // console.log(Hello);
   return (
     <>
       <Header name={doc.name}/>
@@ -16,16 +14,6 @@ export default function Home({doc}) {
     </>
   );
 }
-
-// export async function getStaticPaths() {
-//   const res = await axios(`${process.env.WEB_ADDRESS}/api/docs`);
-// const data=res.data.data;
-// const paths=data.map(d=>({ params: { file: d._id } }));
-//   return {
-//     paths,
-//     fallback:false,
-//   };
-// }
 
 export async function getServerSideProps ({query}){
 
