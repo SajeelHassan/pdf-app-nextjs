@@ -35,7 +35,7 @@ const result = await cloudinary.v2.uploader.upload(`./public/fileuploads/${req.b
   function(error, result) {console.log(result, error); });
 
   let doc = new Doc({
-      name:req.body.name,
+      name:result.original_filename,
       size:req.body.size,
       created:req.body.created,
       filetype:req.body.type,

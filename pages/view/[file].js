@@ -17,22 +17,30 @@ export default function Home({doc}) {
   );
 }
 
-export async function getStaticPaths() {
-  const res = await axios('https://pdfbox.vercel.app/api/docs');
-const data=res.data.data;
-const paths=data.map(d=>({ params: { file: d._id } }));
-  return {
-    paths,
-    fallback:false,
-  };
-}
+// export async function getStaticPaths() {
+//   const res = await axios(`${process.env.WEB_ADDRESS}/api/docs`);
+// const data=res.data.data;
+// const paths=data.map(d=>({ params: { file: d._id } }));
+//   return {
+//     paths,
+//     fallback:false,
+//   };
+// }
 
-export async function getStaticProps (context){
-  const res = await axios(`https://pdfbox.vercel.app/api/docs/${context.params.file}`)
+export async function getServerSideProps ({query}){
+
+  const res = await axios(`${process.env.WEB_ADDRESS}/api/docs/${query.file}`)
+  
+  if (!res.data.data) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props:{
         doc:res.data.data
     },
-    revalidate:1
   }
+  
 }
