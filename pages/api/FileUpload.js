@@ -1,5 +1,5 @@
 import nextConnect from 'next-connect';
-import fs from 'fs';
+// import fs from 'fs';
 import multer from 'multer';
 import cloudinary from '../../utils/cloudinary';
 import dbConnect from '../../utils/dbConnect';
@@ -46,7 +46,7 @@ const result = await cloudinary.v2.uploader.upload(`./public/fileuploads/${req.b
   });
   //Save Doc Via Mongoose
   await doc.save();
-   fs.unlink(`./public/fileuploads/${req.body.name}`,(err)=>{console.log(err)});
+  //  fs.unlink(`./public/fileuploads/${req.body.name}`,(err)=>{console.log(err)});
   res.status(200).json({ data: doc });
     }
     catch(err){
