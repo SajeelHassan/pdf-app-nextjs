@@ -10,7 +10,7 @@ dbConnect();
 // middleware that process files uploaded in multipart/form-data format.
 const upload = multer({
   storage: multer.diskStorage({
-    destination: '',
+    destination: './public/fileuploads',
     filename: (req, file, cb) => cb(null, file.originalname),
   }),
 });
@@ -31,7 +31,7 @@ apiRoute.use(uploadMiddleware);
 // Process a POST request
 apiRoute.post(async (req, res) => {
     try{
-const result = await cloudinary.v2.uploader.upload(`${req.body.name}`, 
+const result = await cloudinary.v2.uploader.upload(`./public/fileuploads/${req.body.name}`, 
   function(error, result) {console.log(result, error); });
 
   let doc = new Doc({

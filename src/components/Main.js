@@ -28,20 +28,35 @@ const Main = ({showInfo,theDocs}) => {
       updatedDocs[docIndex].fav=!updatedDocs[docIndex].fav;
       setDocs(updatedDocs);  
   };
+  async function uploadDbHandler (data){
+const response = await axios.post('/api/uploadToDb',data);
+      // console.log(response);
+      if(response.status===200){
+        setProgress(false);
+        router.reload();
+     }
+  }
   async function uploadFileHandler(formData) {
     setProgress(true);
-    const config = {
-      headers: { 'content-type': 'multipart/form-data' },
-      onUploadProgress: (event) => {
-        // console.log(`Current progress:`, Math.round((event.loaded * 100) / event.total));
-      },
-    };
-    const response = await axios.post('/api/FileUpload', formData, config);
-    if(response.status===200){
-    setProgress(false);
-      router.reload();
-    }
-
+    // const config = {
+    //   headers: { 'content-type': 'multipart/form-data' },
+    //   onUploadProgress: (event) => {
+    //     // console.log(`Current progress:`, Math.round((event.loaded * 100) / event.total));
+    //   },
+    // };
+    // const response = await axios.post('/api/FileUpload', formData, config);
+    // if(response.status===200){
+    // setProgress(false);
+    //   router.reload();
+    // }
+      const response = await axios.post('/api/formidUpload', formData);
+      // console.log(response);
+      if(response.status===200){
+        // setProgress(false);
+        // router.reload();
+        uploadDbHandler(response.data.data);
+        // console.log('foridUpload Response: \n',response.data.data);
+     }
   }
   return (
     <div className={classes.MainWrapper}>

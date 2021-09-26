@@ -16,9 +16,7 @@ export default function Home({doc}) {
 }
 
 export async function getServerSideProps ({query}){
-
-  const res = await axios(`${process.env.WEB_ADDRESS}/api/docs/${query.file}`)
-  
+  const res = await axios(`${process.env.WEB_ADDRESS}/api/docs/${query.file}`);
   if (!res.data.data) {
     return {
       notFound: true,

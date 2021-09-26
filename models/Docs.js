@@ -2,28 +2,36 @@ import mongoose from  'mongoose';
 
 const DocSchema = new mongoose.Schema({
     name: {
-        type: String
+        type: String,
+        required: true, 
     },
     size : {
-        type: String 
+        type: String ,
+        required: true, 
     },
     created : {
-        type: String
+        type: String,
+        required: true, 
     },
     filetype : {
-        type: String
+        type: String,
+        required: true, 
     },
     pdfFile:{
-        type:String
+        type:String,
+        required: true, 
     },
     color:{
-        type:String
+        type:String,
+        required: true, 
     },
     fav:{
-        type:Boolean
+        type:Boolean,
+        required: true, 
     },
     cloudId:{
-        type: String 
+        type: String,
+        required: true,  
 
     }
 })
