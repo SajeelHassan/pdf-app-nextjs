@@ -10,7 +10,7 @@ export const config = {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
   const form = new formidable.IncomingForm();
-  form.uploadDir = "./files";
+  form.uploadDir = "public/fileuploads";
   form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
     console.log(err);
