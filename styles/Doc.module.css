@@ -97,8 +97,9 @@
 .docTitle {
   color: #0266c8;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.25rem;
+  Padding-bottom: 4px
 }
 .docTitleDark{
   color:#5CA3FF;
@@ -111,7 +112,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-  font-style: italic;
+  font-style: normal;
 }
 .docOwnerDark{
   color:#ffffff;

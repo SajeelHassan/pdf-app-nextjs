@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   padding: 1.125rem 3rem;
-  border-top: 1px solid #f5f5f5;
+  /* border-top: 1px solid #f5f5f5; */
 }
 .userAndTitleDark{
   border-top: 1px solid #171D26;
